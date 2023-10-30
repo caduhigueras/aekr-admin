@@ -1,13 +1,14 @@
 import './globals.css'
+import { Providers } from "@/lib/providers";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout(  props: React.PropsWithChildren ) {
   return (
-    <html lang="en">
-      <body className="">{children}</body>
-    </html>
+      <Providers>
+        <html lang="en">
+          <body className="">
+            {props.children}
+          </body>
+        </html>
+      </Providers>
   )
 }
