@@ -25,7 +25,7 @@ export default function Header() {
                 />
             </div>
             <div className="grow">
-                <div className="nav-control" onClick={() => {  dispatch(menuSlice.actions.toggle()) }}>
+                <div className="nav-control cursor-pointer" onClick={() => {  dispatch(menuSlice.actions.toggle()) }}>
                     <FaBarsStaggered />
                 </div>
                 <div className="end-0">
