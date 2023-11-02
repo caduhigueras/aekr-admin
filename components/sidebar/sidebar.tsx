@@ -16,22 +16,6 @@ export default function Sidebar() {
     const getMenuItems = () => {
         return menuItems
     }
-    const toggleSideBarItem = (e: any) => {
-        const allItems = document.querySelectorAll('.main-sidebar-item');
-        let close = false;
-        if (!e.target.parentNode.classList.contains('active')) {
-            close = true;
-        }
-        allItems.forEach((el) => {
-            if (el.className.includes('active')) {
-                el.className = el.className.replace('active', '');
-            }
-        });
-        console.log(e.target.parentNode.classList);
-        if (close) {
-            e.target.parentNode.classList.add("active");
-        }
-    }
 
     const items = useSelector(selectMenuItems);
     const isMenuOpen = useSelector(selectIsMenuOpen);
@@ -43,7 +27,13 @@ export default function Sidebar() {
     }, [items]);
 
     return (
-        <aside className={`full-height bg-primary transition-all ease-in-out ? ${isMenuOpen ? 'md:w-[300px]' : 'md:w-[70px]'}`}>
+        <aside className={`full-height relative bg-primary transition-all ease-in-out ? ${isMenuOpen ? 'hidden md:block md:w-[300px]' : 'z-99 md:-z-1 w-full fixed md:w-[70px]'}`}>
+            <button
+                className="block md:hidden absolute top-1 right-1 cursor-pointer text-white"
+                onClick={() => {  dispatch(menuSlice.actions.toggle()) }}
+            >
+                    close
+            </button>
             <ul className="menu pt-28 flex flex-col justify-evenly bg-primary">
                 {
                     items ? items.map( item => {
