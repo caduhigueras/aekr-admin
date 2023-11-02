@@ -10,7 +10,7 @@ export default function RootLayout(  props: React.PropsWithChildren ) {
           <body className="h-full w-full overflow-hidden flex flex-row">
             <Header />
             <Sidebar />
-            <main>
+            <main className='grow'>
                 {props.children}
             </main>
           </body>
