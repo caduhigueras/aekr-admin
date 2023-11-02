@@ -26,12 +26,17 @@ export const menuItems: MenuItem[] = [
             {
                 name: 'All Pages',
                 order: 1,
-                url: '/page/view'
+                url: '/pages'
             },
             {
                 name: 'Add Pages',
                 order: 2,
-                url: '/page/add'
+                url: '/pages/add'
+            },
+            {
+                name: 'Page Types',
+                order: 3,
+                url: '/pages/types'
             }
         ]
     },
@@ -127,5 +132,65 @@ export const messages = [
         isRead: true,
         userName: 'John Doe',
         date: '27/02/95',
+    },
+]
+
+export interface PageTypes {
+    id: number,
+    name: string,
+    type: string,
+    components: {}[],
+}
+
+export const pageTypes: PageTypes[] = [
+    {
+        id: 1,
+        name: 'Default',
+        type: 'default',
+        components: [
+            {
+                type: 'text',
+                name: 'Title',
+                value: 'title',
+                order: 1
+            },
+            {
+                type: 'textarea',
+                name: 'Title',
+                value: 'meta_description',
+                order: 2
+            },
+            {
+                type: 'wysiwyg',
+                name: 'Content',
+                value: 'content',
+                order: 2
+            },
+        ]
+    },
+    {
+        id: 2,
+        name: 'Home',
+        type: 'home',
+        components: [
+            {
+                type: 'text',
+                name: 'Title',
+                value: 'title',
+                order: 1
+            },
+            {
+                type: 'textarea',
+                name: 'Title',
+                value: 'meta_description',
+                order: 2
+            },
+            {
+                type: 'wysiwyg',
+                name: 'Content',
+                value: 'content',
+                order: 2
+            },
+        ]
     },
 ]
