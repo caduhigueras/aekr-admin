@@ -14,10 +14,17 @@ const config: Config = {
         'dark': '#242634',
         'dark2': '#1d1f2d',
         'lightblue': '#03a9f5',
-        'white': '#e2dfdf',
+        'light': '#e2dfdf',
+        'white': '#ffffff',
         'blue': '#5873FE',
+        'dark-gray': '#29292a',
         'transparent': 'transparent',
       },
+      zIndex: {
+        '1': '1',
+        '99': '99',
+        '999': '999',
+      }
     },
   },
   plugins: [],
