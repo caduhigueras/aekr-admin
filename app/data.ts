@@ -1,10 +1,9 @@
 import { MenuItem } from "@/lib/redux";
-import { FaAlignLeft, FaTools, FaTasks, FaThLarge } from "react-icons/fa";
 
 export const menuItems: MenuItem[] = [
     {
         name: 'Posts',
-        icon: FaThLarge,
+        icon: 'FaThLarge',
         order: 1,
         subMenuItems: [
             {
@@ -21,7 +20,7 @@ export const menuItems: MenuItem[] = [
     },
     {
         name: 'Pages',
-        icon: FaAlignLeft,
+        icon: 'FaAlignLeft',
         order: 1,
         subMenuItems: [
             {
@@ -38,7 +37,7 @@ export const menuItems: MenuItem[] = [
     },
     {
         name: 'Categories',
-        icon: FaTasks,
+        icon: 'FaTasks',
         order: 1,
         subMenuItems: [
             {
@@ -55,7 +54,7 @@ export const menuItems: MenuItem[] = [
     },
     {
         name: 'Settings',
-        icon: FaTools,
+        icon: 'FaTools',
         order: 1,
         subMenuItems: [
             {
@@ -70,4 +69,63 @@ export const menuItems: MenuItem[] = [
             },
         ]
     }
+]
+
+export interface AdminUserInterface {
+    name: string,
+    password: string,
+    email: string,
+    profilePicture: string,
+    authType: string
+}
+
+export const user: AdminUserInterface = {
+    name: 'Kenny Powers',
+    password: ':)',
+    email: 'kennypowers@hbo.com',
+    profilePicture: '/user-placeholder.jpg',
+    authType: 'admin'
+}
+
+export const messages = [
+    {
+        id: 1,
+        title: 'Hi! I have a question',
+        message: 'How about if we could in one case set...',
+        isRead: false,
+        userName: 'John Doe',
+        date: '27/02/95',
+    },
+    {
+        id: 2,
+        title: 'Hi! I have a question',
+        message: 'How about if we could in one case set...',
+        isRead: false,
+        userName: 'John Doe',
+        date: '27/02/95',
+    },
+    {
+        id: 7,
+        title: 'Hi! I have a question',
+        message: 'How about if we could in one case set...',
+        isRead: true,
+        userName: 'John Doe',
+        date: '27/02/95',
+    },
+    {
+        id: 3,
+        title: 'Hi! I have a question',
+        message: 'How about if we could in one case set...',
+        isRead: true,
+        userName: 'John Doe',
+        date: '27/02/95',
+    },
+    {
+        id: 4,
+        title: 'Hi! I have a question',
+        message: 'How about if we could in one case set...',
+        isRead: true,
+        userName: 'John Doe',
+        date: '27/02/95',
+    },
 ]
