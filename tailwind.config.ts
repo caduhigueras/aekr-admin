@@ -18,12 +18,16 @@ const config: Config = {
         'white': '#ffffff',
         'blue': '#5873FE',
         'dark-gray': '#29292a',
+        'light-gray': '#F8F9FE',
         'transparent': 'transparent',
       },
       zIndex: {
         '1': '1',
         '99': '99',
         '999': '999',
+      },
+      boxShadow: {
+        'aekrbox': '0 5px 20px 0 rgba(0,0,0,0.1)]'
       }
     },
   },

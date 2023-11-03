@@ -26,17 +26,17 @@ export const menuItems: MenuItem[] = [
             {
                 name: 'All Pages',
                 order: 1,
-                url: '/pages'
+                url: '/page'
             },
             {
                 name: 'Add Pages',
                 order: 2,
-                url: '/pages/add'
+                url: '/page/add'
             },
             {
                 name: 'Page Types',
                 order: 3,
-                url: '/pages/types'
+                url: '/page/types'
             }
         ]
     },

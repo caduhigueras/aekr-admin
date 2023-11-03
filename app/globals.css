@@ -7,3 +7,39 @@
 .position-unset {
     position: unset;
 }
+.title {
+    @apply text-xl font-bold text-gray-800 border-b border-solid border-secondary text-center pb-4 mb-4
+}
+.bt-primary {
+    @apply bg-primary text-white p-3 rounded-e text-center
+}
+.bb-blue {
+    @apply border-blue
+}
+.bb-lightblue {
+    @apply border-lightblue
+}
+.bb-purple-500 {
+    @apply border-purple-500
+}
+.bb-yellow-500 {
+    @apply border-yellow-500
+}
+.bb-yellow-300 {
+    @apply border-yellow-300
+}
+.bb-red-600 {
+    @apply border-red-600
+}
+.bb-red-500 {
+    @apply border-red-500
+}
+.bb-purple-950 {
+    @apply border-purple-950
+}
+.bb-green-700 {
+    @apply border-green-700
+}
+.bb-green-500 {
+    @apply border-green-500
+}
