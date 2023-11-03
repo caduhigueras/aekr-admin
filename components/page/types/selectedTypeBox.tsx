@@ -5,6 +5,9 @@ import SelectedFileOptions from "@/components/page/types/box/selectedFileOptions
 import SelectedRepeaterOptions from "@/components/page/types/box/selectedRepeaterOptions";
 
 export default function SelectedTypeBox({ currPageType }:{ currPageType:PageTypeInterface }) {
+    const [currentName, setCurrentName] = useState(currPageType.name)
+    const [currentLabel, setCurrentLabel] = useState(currPageType.label)
+
     const typesWithOptions = [
         allowedPageTypes.select,
         allowedPageTypes.multiselect,
@@ -23,24 +26,37 @@ export default function SelectedTypeBox({ currPageType }:{ currPageType:PageType
         setIsBoxActive(!isBoxActive)
     };
 
+    const updateTitle = (ev: React.ChangeEvent<HTMLInputElement>) => {
+        const str = ev.target.value;
+        let formattedName = str.replace(/[^a-zA-Z0-9_]/g, '_');
+        if (formattedName) {
+            formattedName = formattedName.toLowerCase()
+        }
+        currPageType.label = str
+        setCurrentLabel(str)
+        currPageType.name = formattedName
+        setCurrentName(formattedName)
+    };
+
     return (
-        <li key={currPageType.id}
-            className={`w-full p-4 bg-white mb-4 shadow-md border-b-4 border-solid bb-${currPageType.color}`}>
+        <li
+            className={`w-full p-4 bg-white mb-4 shadow-md border-l-4 border-solid bb-${currPageType.color}`}>
             <span
-                className='font-bold text-xl cursor-pointer w-full pb-4 mt-4 block'
+                className='title-small cursor-pointer w-full block'
                 onClick={() => { toggleIsBoxOpen()} }
             >
                 { currPageType.label }
             </span>
             <div className={`w-full transition-all duration-200 ease-in-out
-                ${ isBoxActive ? 'h-auto opacity-100' : 'h-0 overflow-hidden opacity-0'}`}>
+                ${ isBoxActive ? 'h-auto opacity-100 mt-10' : 'h-0 overflow-hidden opacity-0'}`}>
+                <hr className='mb-10 w-full'/>
                 <div className='mb-4 input-wrapper'>
                     <input
                         className='w-full border border-solid p-4 focus:border-secondary'
                         name="label"
                         type="text"
-                        value={ currPageType.label }
-                        onChange={() => {}} placeholder='Label'
+                        value={ currentLabel }
+                        onChange={(ev) => { updateTitle(ev) }} placeholder='Label'
                     />
                 </div>
                 <div className='mb-4 input-wrapper'>
@@ -48,15 +64,17 @@ export default function SelectedTypeBox({ currPageType }:{ currPageType:PageType
                         className='w-full border border-solid p-4 focus:border-secondary'
                         name="name"
                         type="text"
-                        value={ currPageType.name }
-                        onChange={() => {}} placeholder='Name'
+                        value={ currentName }
+                        onChange={() => {}}
+                        placeholder='Name'
                     />
                 </div>
                 <div className='mb-4 input-wrapper'>
-                    <input type="checkbox"
+                    <input className='cursor-pointer'
+                           type="checkbox"
                            name={`is_required-${ currPageType.id }`}
                            id={`is_required-${ currPageType.id }`} />
-                    <label className='cursor-pointer' htmlFor={`is_required-${ currPageType.id }`}>Required</label>
+                    <label className='cursor-pointer ml-2 text-dark-gray' htmlFor={`is_required-${ currPageType.id }`}>Required</label>
                 </div>
                 {
                     typesWithOptions.includes(currPageType.type) ?
@@ -65,7 +83,7 @@ export default function SelectedTypeBox({ currPageType }:{ currPageType:PageType
                 }
                 {
                     fileTypes.includes(currPageType.type) ?
-                        <SelectedFileOptions />
+                        <SelectedFileOptions type={ currPageType } />
                         : ''
                 }
                 {

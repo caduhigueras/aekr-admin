@@ -39,6 +39,7 @@ export const getTypeById = (pageId: number): PageTypeInterface[] => {
                 additionalClasses: ''
             },
             color:'blue',
+            options: []
         },
         {
             id: 112,
@@ -51,6 +52,7 @@ export const getTypeById = (pageId: number): PageTypeInterface[] => {
                 additionalClasses: ''
             },
             color:'lightblue',
+            options: []
         },
     ]
 }
@@ -64,7 +66,8 @@ export const getAllPageTypes = () => {
             label: 'Text Input',
             instructions: 'This is a text input',
             settings: [],
-            color: 'blue'
+            color: 'blue',
+            options: []
         },
         {
             id: 2,
@@ -73,7 +76,8 @@ export const getAllPageTypes = () => {
             label: 'Text Area',
             instructions: 'This is a textarea input',
             settings: [],
-            color: 'lightblue'
+            color: 'lightblue',
+            options: []
         },
         {
             id: 3,
@@ -82,7 +86,8 @@ export const getAllPageTypes = () => {
             label: 'Wysiwyg (Text Editor) Input',
             instructions: 'This is a wysiwyg. Use this for formatting texts, images, html, etc...',
             settings: [],
-            color: 'purple-500'
+            color: 'purple-500',
+            options: []
         },
         {
             id: 4,
@@ -91,7 +96,8 @@ export const getAllPageTypes = () => {
             label: 'Select',
             instructions: 'This is a select input',
             settings: [],//todo add options repeater
-            color: 'yellow-500'
+            color: 'yellow-500',
+            options: []
         },
         {
             id: 5,
@@ -100,7 +106,8 @@ export const getAllPageTypes = () => {
             label: 'Multiselect',
             instructions: 'This is a multiselect input',
             settings: [],//todo add options repeater
-            color: 'yellow-300'
+            color: 'yellow-300',
+            options: []
         },
         {
             id: 6,
@@ -109,7 +116,8 @@ export const getAllPageTypes = () => {
             label: 'Checkbox',
             instructions: 'This is a text input',
             settings: [],//todo add options repeater
-            color: 'red-600'
+            color: 'red-600',
+            options: []
         },
         {
             id: 7,
@@ -118,7 +126,8 @@ export const getAllPageTypes = () => {
             label: 'Radio',
             instructions: 'This is a radio input',
             settings: [],//todo add options repeater
-            color: 'red-500'
+            color: 'red-500',
+            options: []
         },
         {
             id: 8,
@@ -127,7 +136,8 @@ export const getAllPageTypes = () => {
             label: 'Repeater',
             instructions: 'The repeater can be used to create repetition patterns. Example: 6 service boxes component in which all of them contain the same structure',
             settings: [],
-            color: 'purple-950'
+            color: 'purple-950',
+            options: []
         },
         {
             id: 9,
@@ -136,7 +146,8 @@ export const getAllPageTypes = () => {
             label: 'Image Uploader',
             instructions: 'Use to upload images',
             settings: [],//todo add settings for maxsize, file type, etc
-            color: 'green-700'
+            color: 'green-700',
+            options: []
         },
         {
             id: 10,
@@ -145,9 +156,15 @@ export const getAllPageTypes = () => {
             label: 'File Uploader',
             instructions: 'Use to upload images',
             settings: [],//todo add settings for maxsize, file type, etc
-            color: 'green-500'
+            color: 'green-500',
+            options: []
         },
 
     ]
     return pageTypes;
+}
+
+export const updatePageById = ({ pageId, content }: {pageId: number, content: any}) => {
+    console.log('pageId',pageId);
+    console.log('content',content)
 }

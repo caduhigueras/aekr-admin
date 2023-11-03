@@ -1,7 +1,8 @@
 'use client'
 import { useEffect, useState } from "react";
 import { usePathname, useSelectedLayoutSegments } from "next/navigation";
-import { getAllPageTypes, getTypeById, mapPageTypes } from "@/app/api/page/type";
+import shortid from "shortid";
+import { getAllPageTypes, getTypeById, mapPageTypes, updatePageById } from "@/app/api/page/type";
 import { PageTypeInterface } from "@/interfaces";
 import AllAllowedBox from "@/components/page/types/allAllowedBox";
 import SelectedTypeBox from "@/components/page/types/selectedTypeBox";
@@ -58,45 +59,68 @@ export default function Layout() {
         event.preventDefault()
     };
 
+    const savePageType = () => {
+        const data = {
+            pageId: typeId,
+            content: currentPageTypes
+        }
+        //todo check for id to define create or update
+        updatePageById(data)
+    };
     return (
-        <div className='grid grid-1 md:grid-cols-3 gap-7 grow p-8 pt-28 h-full'>
-            <div className='bg-white shadow-xl w-full p-8 h-full'>
-                <h3 className='title'>
-                    Components Available
-                </h3>
-                <ul className='w-full'>
-                    {
-                        allowedPageTypes.map( type => {
-                            return (
-                                <AllAllowedBox key={type.id} type={ type } />
-                            )
-                        })
-                    }
-                </ul>
+        <div className='flex flex-col grow p-8 pt-28 h-full'>
+            <div className='bg-white shadow-md flex flex-row items-center justify-between w-full p-4 mb-4'>
+                <div>
+                    <h3 className='title-big'>Page type</h3>
+                </div>
+                <div>
+                    <button className="bt-sm-primary"
+                        onClick={() => { savePageType() }}
+                    >
+                        Save</button>
+                </div>
             </div>
-            <div className='col-span-1 md:col-span-2 h-full bg-white shadow-xl w-full p-8 overflow-y-scroll'>
-                <h3 className='title'>Components In Use</h3>
-                <div className=''>
-                    <ul>
+            <div className='flex-grow grid grid-1 md:grid-cols-3 gap-7 h-full'>
+                <div className='overflow-y-scroll bg-white shadow-xl w-full p-8 h-[90%]'>
+                    <h3 className='title'>
+                        Components Available
+                    </h3>
+                    <ul className='w-full'>
                         {
-                            currentPageTypes.map( currPageType => {
+                            allowedPageTypes.map( type => {
                                 return (
-                                    <SelectedTypeBox key={currPageType.id} currPageType={currPageType} />
+                                    <AllAllowedBox key={shortid.generate()} type={ type } />
                                 )
                             })
                         }
-                        <li
-                            className={`bg-light border-[7px] border-dashed border-purple-300 hover:border-secondary 
-                            transition-all ease-in duration-150 text-center p-10`}
-                            onDrop={(event) => {
-                                drop(event)
-                            }}
-                            onDragOver={event => {
-                                checkAllowDrop(event)
-                            }}>
-                            <span className='w-full uppercase text-xl text-secondary font-bold'>drop here</span>
-                        </li>
                     </ul>
+                </div>
+                <div className='overflow-y-scroll col-span-1 md:col-span-2 h-[90%] bg-white shadow-xl w-full p-8'>
+                    <h3 className='title'>Components In Use</h3>
+                    <div className=''>
+                        <ul>
+                            {
+                                currentPageTypes.map( currPageType => {
+                                    return (
+                                        <SelectedTypeBox
+                                            key={shortid.generate()}
+                                            currPageType={currPageType} />
+                                    )
+                                })
+                            }
+                            <li
+                                className={`bg-gray-100 border-[3px] border-dashed border-purple-300 hover:border-secondary 
+                            transition-all ease-in duration-150 text-center p-10`}
+                                onDrop={(event) => {
+                                    drop(event)
+                                }}
+                                onDragOver={event => {
+                                    checkAllowDrop(event)
+                                }}>
+                                <span className='w-full uppercase text-xl text-secondary font-bold'>drop here</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 

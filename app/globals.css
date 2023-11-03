@@ -10,8 +10,23 @@
 .title {
     @apply text-xl font-bold text-gray-800 border-b border-solid border-secondary text-center pb-4 mb-4
 }
+.title-big {
+    @apply text-2xl font-bold
+}
+.title-small {
+    @apply text-xl font-bold
+}
 .bt-primary {
-    @apply bg-primary text-white p-3 rounded-e text-center
+    /*& :hover {
+        @apply bg-dark
+    }*/
+    @apply bg-primary text-white p-3 rounded text-center
+}
+.bt-sm-primary {
+   /* & :hover {
+        @apply bg-dark
+    }*/
+    @apply bg-primary text-white pt-1 pb-1 pl-4 pr-4 rounded text-center
 }
 .bb-blue {
     @apply border-blue
