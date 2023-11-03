@@ -27,7 +27,7 @@ export default function Sidebar() {
     }, [items]);
 
     return (
-        <aside className={`full-height relative bg-primary transition-all ease-in-out ? ${isMenuOpen ? 'hidden md:block md:w-[300px]' : 'z-99 md:-z-1 w-full fixed md:w-[70px]'}`}>
+        <aside className={`full-height relative bg-primary transition-all ease-in-out shadow-[0_5px_20px_0_rgba(0,0,0,0.1) ? ${isMenuOpen ? 'hidden md:block md:w-[300px]' : 'z-99 md:-z-1 w-full fixed md:w-[70px]'}`}>
             <button
                 className="block md:hidden absolute top-1 right-1 cursor-pointer text-white"
                 onClick={() => {  dispatch(menuSlice.actions.toggle()) }}
