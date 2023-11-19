@@ -28,7 +28,7 @@ const config: Config = {
       },
       boxShadow: {
         'aekrbox': '0 5px 20px 0 rgba(0,0,0,0.1)]'
-      }
+      },
     },
   },
   plugins: [],

@@ -28,6 +28,9 @@
     }*/
     @apply bg-primary text-white pt-1 pb-1 pl-4 pr-4 rounded text-center
 }
+.bt-white-with-icon {
+    @apply bg-white border border-solid flex flex-row justify-between p-2 items-center rounded
+}
 .bb-blue {
     @apply border-blue
 }
