@@ -18,8 +18,9 @@ const config: Config = {
         'white': '#ffffff',
         'blue': '#5873FE',
         'dark-gray': '#29292a',
-        'light-gray': '#F8F9FE',
+        'light-gray': '#D5DDE5',
         'transparent': 'transparent',
+        'text-primary': '#313131'
       },
       zIndex: {
         '1': '1',

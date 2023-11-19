@@ -6,8 +6,8 @@ import Header from "@/components/header/header";
 export default function RootLayout(  props: React.PropsWithChildren ) {
   return (
       <Providers>
-        <html lang="en" className="h-full w-full overflow-hidden">
-          <body className="h-full w-full overflow-hidden flex flex-row">
+        <html lang="en">
+          <body>
             <Header />
             <Sidebar />
             <main className='grow bg-light-gray'>

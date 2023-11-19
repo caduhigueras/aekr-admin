@@ -9,6 +9,7 @@ import {
 import React, { useEffect } from "react";
 import { menuItems } from "@/app/data";
 import SidebarItem from "@/components/sidebar/sidebarItem";
+import Image from "next/image";
 
 export default function Sidebar() {
     const dispatch = useDispatch();
@@ -27,7 +28,17 @@ export default function Sidebar() {
     }, [items]);
 
     return (
-        <aside className={`full-height relative bg-primary transition-all ease-in-out shadow-[0_5px_20px_0_rgba(0,0,0,0.1) ? ${isMenuOpen ? 'hidden md:block md:w-[300px]' : 'z-99 md:-z-1 w-full fixed md:w-[70px]'}`}>
+        <aside className={`fixed top-0 left-0 bottom-0 bg-primary transition-all ease-in-out shadow-[0_5px_20px_0_rgba(0,0,0,0.1) z-999 ${isMenuOpen ? 'hidden md:block md:w-[300px]' : 'z-99 md:-z-1 w-full md:w-[70px]'}`}>
+            <div className={`logo text-center md:text-left ${isMenuOpen ? 'w-full md:w-[300px]' : 'w-full md:w-[70px]'}`}>
+                <Image
+                    className={`m-auto`}
+                    loading="eager"
+                    src="/logo.png"
+                    alt='logo'
+                    width={50}
+                    height={50}
+                />
+            </div>
             <button
                 className="block md:hidden absolute top-1 right-1 cursor-pointer text-white"
                 onClick={() => {  dispatch(menuSlice.actions.toggle()) }}
