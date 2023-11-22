@@ -28,7 +28,6 @@ export default function AllAllowedBox({ type }: { type: PageTypeInterface }) {
             onDragStart={ event => {
                 drag(event)
             }}
-            key={`allowed-${type.id}`}
             data-pagetype={ type.type }
             data-id={type.id}
             data-name={type.name}

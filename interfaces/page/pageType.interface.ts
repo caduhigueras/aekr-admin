@@ -18,4 +18,5 @@ export interface PageTypeInterface {
     instructions: string,
     settings: object, //todo own interface,
     color: string,
+    options: Array<any>
 }
