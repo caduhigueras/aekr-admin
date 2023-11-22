@@ -1,11 +1,10 @@
-"use client"
+'use client'
 import { selectIsMenuOpen, useSelector } from "@/lib/redux";
 import { getAllPages } from '@/app/api'
 import { useEffect, useState } from "react";
 import { PageListItemInterface } from "@/interfaces";
 
 // export const metadata = { title: 'AEKR - View All Pages' };
-
 export default function Page() {
     const isMenuOpen = useSelector(selectIsMenuOpen)
     const initialAllPages: Array<PageListItemInterface> = [];
