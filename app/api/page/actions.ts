@@ -1,5 +1,13 @@
 import { PageListItemInterface } from '@/interfaces'
-export const getAllPages = ({from, count, query}: { from: number, count: number, query: string }): PageListItemInterface[] => {
+
+type getAllPagesProps = {
+    from: number,
+    count: number,
+    query: string,
+    orderBy: string,
+    sort: string
+}
+export const getAllPages = ({from, count, query, orderBy, sort}: getAllPagesProps): PageListItemInterface[] => {
     return [
         {
             id: 1,
@@ -14,7 +22,7 @@ export const getAllPages = ({from, count, query}: { from: number, count: number,
             name: 'Test Page 1',
             views: 998,
             url: 'https://url.com',
-            status: 1,
+            status: 2,
             created_at: new Date(),
             updated_at: new Date(),
         },{
@@ -22,7 +30,7 @@ export const getAllPages = ({from, count, query}: { from: number, count: number,
             name: 'Home Page',
             views: 999,
             url: 'https://url.com',
-            status: 1,
+            status: 2,
             created_at: new Date(),
             updated_at: new Date(),
         },{
