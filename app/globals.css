@@ -1,6 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.card-default {
+    @apply bg-white border border-light-gray3 shadow-[0_0_23px_0_#dddfea]
+}
+.title-default {
+    @apply text-sm font-semibold text-left text-text-primary
+}
 .default-popup-bg {
     @apply w-full bg-white border border-solid border-light p-6 shadow-[0_5px_20px_0_rgba(0,0,0,0.1)] z-10
 }
