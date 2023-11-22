@@ -1,8 +1,8 @@
 "use client"
-import {selectIsMenuOpen, useSelector} from "@/lib/redux";
+import { selectIsMenuOpen, useSelector } from "@/lib/redux";
 import { getAllPages } from '@/app/api'
-import {useEffect, useState} from "react";
-import {PageListItemInterface} from "@/interfaces";
+import { useEffect, useState } from "react";
+import { PageListItemInterface } from "@/interfaces";
 
 // export const metadata = { title: 'AEKR - View All Pages' };
 
@@ -15,7 +15,9 @@ export default function Page() {
         const from = 0
         const count= 10
         const query = ''
-        setAllPages(getAllPages({ from, count, query }))
+        const sort = 'ASC'
+        const orderBy = ''
+        setAllPages(getAllPages({ from, count, query, sort, orderBy }))
     }, []);
 
     return (
@@ -25,34 +27,106 @@ export default function Page() {
                     <div className='p-8'>
                         <h1 className='title-default'>All Pages</h1>
                     </div>
-                    <div className='p-8'>
-                        navbar
+                    <div className='p-8 flex flex-row justify-between items-center'>
+                        <div>
+                            <div className='relative'>
+                                <svg
+                                    width={18}
+                                    height={18}
+                                    viewBox="0 0 18 18"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="w-[18px] h-[18px] absolute left-2 z-10 top-1/2 -translate-y-1/2"
+                                    preserveAspectRatio="xMidYMid meet"
+                                >
+                                    <path
+                                        d="M9.375 15.75C5.43997 15.75 2.25 12.56 2.25 8.625C2.25 4.68997 5.43997 1.5 9.375 1.5C13.31 1.5 16.5 4.68997 16.5 8.625C16.5 12.56 13.31 15.75 9.375 15.75Z"
+                                        stroke="#AAA2A2"
+                                        strokeWidth="1.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                    <path
+                                        d="M1.5 16.5L3 15"
+                                        stroke="#AAA2A2"
+                                        strokeWidth="1.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                </svg>
+                                <input type="text"
+                                       placeholder='Search...'
+                                       className='rounded-[5px] bg-[#f8f9fe] border border-[#dfdfdf] w-[334px] p-2 pl-7'
+                                       onChange={(e) => {console.log(e)}}/>
+                            </div>
+                        </div>
+                        <div>
+test
+                        </div>
                     </div>
                     <div className='w-full'>
                         <table className='w-full'>
                             <thead className='w-full p-8 bg-[#f8f9fe] border border-[#e3e3e3]'>
                                 <tr className='uppercase text-xs text-left text-text-primary border-spacing-2.5'>
+                                    <th className='pl-4 pt-2 pb-2 w-[3%]'></th>
                                     <th className='pl-2 pt-2 pb-2'>Name</th>
                                     <th className='pl-2 pt-2 pb-2'>Views</th>
                                     <th className='pl-2 pt-2 pb-2'>Url</th>
                                     <th className='pl-2 pt-2 pb-2'>Status</th>
                                     <th className='pl-2 pt-2 pb-2'>Created At</th>
                                     <th className='pl-2 pt-2 pb-2'>Updated At</th>
-                                    <th className='pl-2 pt-2 pb-2'>Actions</th>
+                                    <th className='pl-2 pt-2 pb-2 w-1/12'>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
                                     allPages.map((pageItem) => {
                                         return (
-                                            <tr>
-                                                <td className='pl-2 pt-2 pb-2'>{pageItem.name}</td>
-                                                <td className='pl-2 pt-2 pb-2'>{pageItem.views}</td>
-                                                <td className='pl-2 pt-2 pb-2'>{pageItem.url}</td>
-                                                <td className='pl-2 pt-2 pb-2'>{pageItem.status}</td>
-                                                <td className='pl-2 pt-2 pb-2'>{pageItem.created_at.getDate()}</td>
-                                                <td className='pl-2 pt-2 pb-2'>{pageItem.updated_at.getDate()}</td>
-                                                <td className='pl-2 pt-2 pb-2'>
+                                            <tr key={pageItem.id}
+                                                className='border-b border-solid border-light-gray'>
+                                                <td className='pl-4 pt-2 pb-2'>
+                                                    <input type='checkbox'
+                                                           className='cursor-pointer'
+                                                           onChange={(e) => { console.log(e)}}/>
+                                                </td>
+                                                <td className='pl-2 pt-5 pb-5 text-sm text-black'>{pageItem.name}</td>
+                                                <td className='pl-2 pt-5 pb-5 text-sm text-text-primary'>{pageItem.views}</td>
+                                                <td className='pl-2 pt-5 pb-5 text-sm text-text-primary'>{pageItem.url}</td>
+                                                <td className='pl-2 pt-5 pb-5 text-sm text-text-primary'>
+                                                    {
+                                                        pageItem.status === 1 ?
+                                                            <span className='text-default-green flex flex-row items-center'>
+                                                                <svg
+                                                                    width={11}
+                                                                    height={11}
+                                                                    viewBox="0 0 11 11"
+                                                                    fill="none"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    preserveAspectRatio="xMidYMid meet"
+                                                                >
+                                                                    <circle cx="5.5" cy="5.5" r="5.5" fill="#05A03A" />
+                                                                </svg>
+                                                                <span className='ml-1'>Enabled</span>
+                                                            </span>
+                                                        :
+                                                            <span className='text-default-red flex flex-row items-center'>
+                                                                <svg
+                                                                    width={11}
+                                                                    height={11}
+                                                                    viewBox="0 0 11 11"
+                                                                    fill="none"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    preserveAspectRatio="xMidYMid meet"
+                                                                >
+                                                                    <circle cx="5.5" cy="5.5" r="5.5" fill="#FF0000" />
+                                                                </svg>
+                                                                <span className='ml-1'>Enabled</span>
+                                                            </span>
+                                                    }
+                                                </td>
+                                                <td className='pl-2 pt-5 pb-5 text-sm text-text-primary'>{pageItem.created_at.getDate()}</td>
+                                                <td className='pl-2 pt-5 pb-5 text-sm text-text-primary'>{pageItem.updated_at.getDate()}</td>
+                                                <td className='pl-2 pt-5 pb-5 text-sm text-text-primary'>
                                                     <svg
                                                         width={16}
                                                         height={16}

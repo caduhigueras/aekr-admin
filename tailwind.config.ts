@@ -22,7 +22,9 @@ const config: Config = {
         'light-gray2': '#F8F9FE',
         'light-gray3': '#dfdfdf',
         'transparent': 'transparent',
-        'text-primary': '#313131'
+        'text-primary': '#313131',
+        'default-green': '#05A03A',
+        'default-red': '#FF0000',
       },
       zIndex: {
         '1': '1',
