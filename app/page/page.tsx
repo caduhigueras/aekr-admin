@@ -3,12 +3,15 @@ import { selectIsMenuOpen, useSelector } from "@/lib/redux";
 import { getAllPages } from '@/app/api'
 import { useEffect, useState } from "react";
 import { PageListItemInterface } from "@/interfaces";
+import { Buttons, Filters } from "@/components";
 
 // export const metadata = { title: 'AEKR - View All Pages' };
 export default function Page() {
     const isMenuOpen = useSelector(selectIsMenuOpen)
     const initialAllPages: Array<PageListItemInterface> = [];
     const [allPages, setAllPages] = useState(initialAllPages)
+
+    const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
     useEffect(() => {
         const from = 0
@@ -26,7 +29,7 @@ export default function Page() {
                     <div className='p-8'>
                         <h1 className='title-default'>All Pages</h1>
                     </div>
-                    <div className='p-8 flex flex-row justify-between items-center'>
+                    <div className='p-8 flex flex-row justify-between items-center w-full'>
                         <div>
                             <div className='relative'>
                                 <svg
@@ -60,8 +63,11 @@ export default function Page() {
                             </div>
                         </div>
                         <div>
-test
+                            <Buttons isFiltersOpen={isFiltersOpen} setIsFiltersOpen={setIsFiltersOpen} />
                         </div>
+                    </div>
+                    <div className='w-full'>
+                        <Filters isFiltersOpen={isFiltersOpen} setIsFiltersOpen={setIsFiltersOpen} />
                     </div>
                     <div className='w-full'>
                         <table className='w-full'>
@@ -119,7 +125,7 @@ test
                                                                 >
                                                                     <circle cx="5.5" cy="5.5" r="5.5" fill="#FF0000" />
                                                                 </svg>
-                                                                <span className='ml-1'>Enabled</span>
+                                                                <span className='ml-1'>Disabled</span>
                                                             </span>
                                                     }
                                                 </td>
